@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        game = new Game();
-
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
@@ -41,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         button9 = findViewById(R.id.button9);
         buttonReset = findViewById(R.id.buttonReset);
 
+        game = new Game();
     }
 
     public void tileClicked(View view) {
@@ -48,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Tic", "tileClicked");
 
         int id = view.getId();
+
+        Tile tile;
+
         Log.d("mainActivity", Integer.toString(id));
 
 
@@ -55,39 +57,52 @@ public class MainActivity extends AppCompatActivity {
 
         // button 1
         if (id == 2131165220) {
-            game.draw(0,0);
+            tile = game.draw(0,0);
+
+            switch(tile) {
+                case CROSS:
+                    // cross visible maken
+                    break;
+                case CIRCLE:
+                    // circle visible maken
+                    break;
+                case INVALID:
+                    // do something different
+                    break;
+            }
+
         }
         // button 2
         if (id == 2131165221) {
-            game.draw(0,1);
+            tile = game.draw(0,1);
         }
         // button3
         if (id == 2131165222) {
-            game.draw(0,2);
+            tile = game.draw(0,2);
         }
         // button4
         if (id == 2131165223) {
-            game.draw(1,0);
+            tile = game.draw(1,0);
         }
         // button5
         if (id == 2131165224) {
-            game.draw(1,1);
+            tile = game.draw(1,1);
         }
         // button6
         if (id == 2131165225) {
-            game.draw(1,2);
+            tile = game.draw(1,2);
         }
         // button7
         if (id == 2131165226) {
-            game.draw(2,0);
+            tile = game.draw(2,0);
         }
         // button8
         if (id == 2131165227) {
-            game.draw(2,1);
+            tile = game.draw(2,1);
         }
         // button9
         if (id == 2131165228) {
-            game.draw(2,2);
+            tile = game.draw(2,2);
         }
     }
 

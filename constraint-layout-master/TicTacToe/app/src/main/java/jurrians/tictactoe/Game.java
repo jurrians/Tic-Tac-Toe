@@ -39,8 +39,11 @@ public class Game {
             }
         }
 
+        else {
+            return Tile.INVALID;
+        }
 
-        return Tile.INVALID;
+
     }
 
 
