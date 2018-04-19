@@ -55,39 +55,39 @@ public class MainActivity extends AppCompatActivity {
 
         // button 1
         if (id == 2131165220) {
-            game.draw(1,1);
+            game.draw(0,0);
         }
         // button 2
         if (id == 2131165221) {
-            game.draw(1,2);
+            game.draw(0,1);
         }
         // button3
         if (id == 2131165222) {
-            game.draw(1,3);
+            game.draw(0,2);
         }
         // button4
         if (id == 2131165223) {
-            game.draw(2,1);
+            game.draw(1,0);
         }
         // button5
         if (id == 2131165224) {
-            game.draw(2,2);
+            game.draw(1,1);
         }
         // button6
         if (id == 2131165225) {
-            game.draw(2,3);
+            game.draw(1,2);
         }
         // button7
         if (id == 2131165226) {
-            game.draw(3,1);
+            game.draw(2,0);
         }
         // button8
         if (id == 2131165227) {
-            game.draw(3,2);
+            game.draw(2,1);
         }
         // button9
         if (id == 2131165228) {
-            game.draw(3,3);
+            game.draw(2,2);
         }
     }
 
