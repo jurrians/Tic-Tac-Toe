@@ -1,3 +1,5 @@
+package jurrians.tictactoe;
+
 public enum GameState {
     IN_PROGRESS,
     PLAYER_ONE,

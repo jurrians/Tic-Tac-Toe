@@ -44,22 +44,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tileClicked(View view) {
-        Button button = (Button) view;
-
-        String butString = button.getText().toString();
 
         Log.d("Tic", "tileClicked");
 
+        int id = view.getId();
+        Log.d("mainActivity", Integer.toString(id));
 
 
+        //  vertaling maken van bij welke row/column
+        if (id = 1) {
 
 
-            if (button1.isActivated()) {
-
-            }
-
-
-
+        }
 
 
 

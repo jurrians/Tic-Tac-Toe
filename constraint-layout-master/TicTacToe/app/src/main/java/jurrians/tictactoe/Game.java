@@ -1,3 +1,4 @@
+package jurrians.tictactoe;
 
 public class Game {
 
@@ -22,16 +23,20 @@ public class Game {
 
     public Tile draw(int row, int column) {
 
+        // retrieve current value of board at position (row, column)
+        // if place is still blank, we can go ahead and fill it
+        // if current plater = 1, fill with cross
+        // if current player = 2, fill with circle
+        // either case: make sure other player gets the turn
+        // both cases: make sure to return jurrians.tictactoe.Tile.CROSS or TILE.CIRCLE to allow the UI to update
+        // if that place isnt blank, its an invalid move! --> return jurrians.tictactoe.Tile.INVALID
+
         String curVal = "";
 
-        // retrieve current value of board at position (row, column)
-        for(int i=0; i<BOARD_SIZE; i++)
-            for(int j=0; j<BOARD_SIZE; j++)
-                if (i == row && j == column) {
-                    curVal = board[i][j].toString();
-                };
+        curVal = board[row][column].toString();
 
-        if (curVal.equals("BLANK")) {
+
+        if (curVal.equals("jurrians.tictactoe.Tile.BLANK")) {
             if (playerOneTurn) {
                 board[row][column] = Tile.CROSS;
                 playerOneTurn = false;
@@ -46,15 +51,9 @@ public class Game {
         }
 
 //        else {
-//            return Tile.INVALID;
+//            return jurrians.tictactoe.Tile.INVALID;
 //        }
 
-        // if place is still blank, we can go ahead and fill it
-            // if current plater = 1, fill with cross
-            // if current player = 2, fill with circle
-            // either case: make sure other player gets the turn
-            // both cases: make sure to return Tile.CROSS or TILE.CIRCLE to allow the UI to update
-        // if that place isnt blank, its an invalid move! --> return Tile.INVALID
         return Tile.INVALID;
     }
 
