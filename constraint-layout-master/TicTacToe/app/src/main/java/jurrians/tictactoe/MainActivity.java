@@ -8,6 +8,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    Game game;
+
     Button button1;
     Button button2;
     Button button3;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        game = new Game();
+
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
@@ -43,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button) view;
 
         String butString = button.getText().toString();
-
-
-
 
         Log.d("Tic", "tileClicked");
 

@@ -22,7 +22,7 @@ public class Game {
 
     public Tile draw(int row, int column) {
 
-        String curVal;
+        String curVal = "";
 
         // retrieve current value of board at position (row, column)
         for(int i=0; i<BOARD_SIZE; i++)
@@ -32,13 +32,22 @@ public class Game {
                 };
 
         if (curVal.equals("BLANK")) {
+            if (playerOneTurn) {
+                board[row][column] = Tile.CROSS;
+                playerOneTurn = false;
+                return Tile.CROSS;
 
+            }
+            if (!playerOneTurn) {
+                board[row][column] = Tile.CIRCLE;
+                playerOneTurn = true;
+                return Tile.CIRCLE;
+            }
         }
 
-        else {
-            return Tile.INVALID;
-        }
-
+//        else {
+//            return Tile.INVALID;
+//        }
 
         // if place is still blank, we can go ahead and fill it
             // if current plater = 1, fill with cross
@@ -46,7 +55,7 @@ public class Game {
             // either case: make sure other player gets the turn
             // both cases: make sure to return Tile.CROSS or TILE.CIRCLE to allow the UI to update
         // if that place isnt blank, its an invalid move! --> return Tile.INVALID
-
+        return Tile.INVALID;
     }
 
 
