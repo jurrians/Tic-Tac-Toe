@@ -52,16 +52,48 @@ public class MainActivity extends AppCompatActivity {
 
 
         //  vertaling maken van bij welke row/column
-        if (id = 1) {
 
-
+        // button 1
+        if (id == 2131165220) {
+            game.draw(1,1);
         }
-
-
-
+        // button 2
+        if (id == 2131165221) {
+            game.draw(1,2);
+        }
+        // button3
+        if (id == 2131165222) {
+            game.draw(1,3);
+        }
+        // button4
+        if (id == 2131165223) {
+            game.draw(2,1);
+        }
+        // button5
+        if (id == 2131165224) {
+            game.draw(2,2);
+        }
+        // button6
+        if (id == 2131165225) {
+            game.draw(2,3);
+        }
+        // button7
+        if (id == 2131165226) {
+            game.draw(3,1);
+        }
+        // button8
+        if (id == 2131165227) {
+            game.draw(3,2);
+        }
+        // button9
+        if (id == 2131165228) {
+            game.draw(3,3);
+        }
     }
 
     public void resetClicked (View view) {
+        game = new Game();
 
+        // dont forget to reset UI as well
     }
 }
