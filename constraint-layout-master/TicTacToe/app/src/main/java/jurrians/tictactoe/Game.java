@@ -1,11 +1,13 @@
 package jurrians.tictactoe;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
 
     final private int BOARD_SIZE = 3;
     private Tile[][] board;
 
-    private boolean playerOneTurn; // true if players 1's turn, false if player 2
+    public boolean playerOneTurn; // true if players 1's turn, false if player 2
     private int movesPlayed;
     private boolean gameOver;
 
@@ -43,7 +45,7 @@ public class Game {
             return Tile.INVALID;
         }
 
-
+        return Tile.INVALID;
     }
 
 
