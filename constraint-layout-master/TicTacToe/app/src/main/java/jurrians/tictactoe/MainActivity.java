@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
+
+import static jurrians.tictactoe.Tile.BLANK;
+import static jurrians.tictactoe.Tile.CROSS;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -97,9 +102,6 @@ public class MainActivity extends AppCompatActivity {
 //        playerCross = findViewById(R.id.playerCross);
 //        playerCircle = findViewById(R.id.playerCircle);
 
-
-
-
         game = new Game();
     }
 
@@ -107,10 +109,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-//        String gameSave = game.toString();
-//        outState.putSerializable("gameSave", gameSave);
 
-        Bundle gameSave = game.getClass();
+
+//        Tile boardSave[][] = game.getTileState();
+//        outState.put
+//        outState.putSerializable("boardSave", boardSave);
+        Tile boardSave[][] = game.getTileState();
+        outState.putSerializable("boardSave", boardSave);
+
+
+        boolean playerSave = game.playerOneTurn;
+        outState.putBoolean("playerSave", playerSave);
+
+
 
 
         int cross1Value = cross1.getVisibility();
@@ -123,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt("cross3", cross3Value);
 
         int cross4Value = cross4.getVisibility();
-        outState.putInt("cross5", cross4Value);
+        outState.putInt("cross4", cross4Value);
 
         int cross5Value = cross5.getVisibility();
         outState.putInt("cross5", cross5Value);
@@ -175,8 +186,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle inState) {
         super.onRestoreInstanceState(inState);
 
-//        String gameSaveRes = inState.getString("gameSave");
-//        inState.getSerializable(gameSaveRes);
+
+        game.playerOneTurn = inState.getBoolean("playerSave");
+
+
+
+
+//        game.putTileState(inState.getSerializable("boardSave"));
+        Tile[][] tiles = (Tile[][]) inState.getSerializable("boardSave");
+        game.board = (Tile[][]) game.putTileState(tiles);
+
+
 
 
         int cross1ValueRes = inState.getInt("cross1");
@@ -204,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
         cross8.setVisibility(cross8ValueRes);
 
         int cross9ValueRes = inState.getInt("cross9");
-        cross8.setVisibility(cross9ValueRes);
+        cross9.setVisibility(cross9ValueRes);
 
 
         int circle1ValueRes = inState.getInt("circle1");
