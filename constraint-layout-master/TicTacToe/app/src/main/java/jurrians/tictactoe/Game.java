@@ -1,7 +1,5 @@
 package jurrians.tictactoe;
 
-import android.view.View;
-
 import java.io.Serializable;
 
 import static jurrians.tictactoe.Tile.BLANK;
@@ -61,7 +59,7 @@ public class Game implements Serializable {
 
         boardSave = new Tile[BOARD_SIZE][BOARD_SIZE];
 
-        // add method to class to ensure that you can find the state of each tile
+        // method to find the state of each tile
         for(int i=0; i<BOARD_SIZE; i++)
             for(int j=0; j<BOARD_SIZE; j++)
 
@@ -80,6 +78,7 @@ public class Game implements Serializable {
         return boardSave;
     }
 
+    // methode voor restoren van game backend
     public Tile[][] putTileState(Tile[][] boardSave) {
 
         Tile boardRes[][] = new Tile[BOARD_SIZE][BOARD_SIZE];

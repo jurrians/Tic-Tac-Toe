@@ -8,18 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.Serializable;
-import java.lang.reflect.Array;
-
-import static jurrians.tictactoe.Tile.BLANK;
-import static jurrians.tictactoe.Tile.CROSS;
-
 
 public class MainActivity extends AppCompatActivity {
-
-
-
-
 
     Game game;
 
@@ -55,18 +45,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView circle8;
     ImageView circle9;
 
-//    ImageView playerCross;
-//    ImageView playerCircle;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
@@ -99,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
         circle8 = findViewById(R.id.circle8);
         circle9 = findViewById(R.id.circle9);
 
-//        playerCross = findViewById(R.id.playerCross);
-//        playerCircle = findViewById(R.id.playerCircle);
-
         game = new Game();
     }
 
@@ -109,21 +88,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-
-
-//        Tile boardSave[][] = game.getTileState();
-//        outState.put
-//        outState.putSerializable("boardSave", boardSave);
+        // save game backend
         Tile boardSave[][] = game.getTileState();
         outState.putSerializable("boardSave", boardSave);
 
-
+        // save player turn
         boolean playerSave = game.playerOneTurn;
         outState.putBoolean("playerSave", playerSave);
 
-
-
-
+        // save UI
         int cross1Value = cross1.getVisibility();
         outState.putInt("cross1", cross1Value);
 
@@ -150,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
         int cross9Value = cross9.getVisibility();
         outState.putInt("cross9", cross9Value);
-
 
 
         int circle1Value = circle1.getVisibility();
@@ -186,19 +158,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle inState) {
         super.onRestoreInstanceState(inState);
 
-
+        // restore player turn
         game.playerOneTurn = inState.getBoolean("playerSave");
 
-
-
-
-//        game.putTileState(inState.getSerializable("boardSave"));
+        // restore game backend
         Tile[][] tiles = (Tile[][]) inState.getSerializable("boardSave");
-        game.board = (Tile[][]) game.putTileState(tiles);
+        game.board = game.putTileState(tiles);
 
-
-
-
+        // restore UI
         int cross1ValueRes = inState.getInt("cross1");
         cross1.setVisibility(cross1ValueRes);
 
@@ -256,54 +223,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
     public void tileClicked(View view) {
 
         Log.d("Tic", "tileClicked");
 
-        int id = view.getId();
-
         Tile tile;
 
-        Log.d("mainActivity", Integer.toString(id));
-
-//        if (game.playerOneTurn) {
-//            switch (tile) {
-//                case BLANK:
-//                    playerCircle.setVisibility(View.VISIBLE);
-//                    playerCross.setVisibility(View.INVISIBLE);
-//                    break;
-//                case CROSS:
-//                    break;
-//                case CIRCLE:
-//                    break;
-//            }
-//
-//        }
-//
-//        if (!game.playerOneTurn) {
-//            if (tile.INVALID);
-//
-//
-//            switch (tile.INVALID) {
-//                case BLANK:
-//                    playerCircle.setVisibility(View.INVISIBLE);
-//                    playerCross.setVisibility(View.VISIBLE);
-//                    break;
-//                case CROSS:
-//                    break;
-//                case CIRCLE:
-//                    break;
-//
-//            }
-//        }
-
-
-        //  vertaling maken van bij welke row/column
+        int id = view.getId();
 
         // button 1
         if (id == 2131165220) {
@@ -313,7 +239,6 @@ public class MainActivity extends AppCompatActivity {
                 case CROSS:
                     // cross visible maken
                     cross1.setVisibility(View.VISIBLE);
-
                     break;
                 case CIRCLE:
                     // circle visible maken
@@ -321,10 +246,8 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case INVALID:
-                    // do something different
                     break;
             }
-
         }
         // button 2
         if (id == 2131165221) {
@@ -473,6 +396,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetClicked (View view) {
+        // reset game
         game = new Game();
 
         // reset UI
@@ -496,9 +420,5 @@ public class MainActivity extends AppCompatActivity {
         circle8.setVisibility(View.INVISIBLE);
         circle9.setVisibility(View.INVISIBLE);
 
-//        playerCircle.setVisibility(View.INVISIBLE);
-//        playerCross.setVisibility(View.VISIBLE);
-
-        // dont forget to reset UI as well
     }
 }
